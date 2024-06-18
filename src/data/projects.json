@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Urban Scholaria",
+    "img": "/uploads/project-urban-scholaria.png",
+    "start_date": "2023-09-01",
+    "end_date": "2023-12-01",
+    "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis reiciendis est hic sapiente non illo? Laboriosam ducimus sequi nesciunt impedit!",
+    "tech": "React, TailwindCSS, Axios",
+    "github": "https://github.com/febriandfa/urban-scholaria",
+    "website": "https://urbanskuy.netlify.app/"
+  },
+  {
+    "name": "Jembul Smart Village",
+    "img": "/uploads/project-jembul-smart-village.png",
+    "start_date": "2023-02-01",
+    "end_date": "2023-10-01",
+    "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis reiciendis est hic sapiente non illo? Laboriosam ducimus sequi nesciunt impedit!",
+    "tech": "HTML, JavaScript, TailwindCSS, Laravel",
+    "website": "https://www.desa-jembul.com/"
+  }
+]
