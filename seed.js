@@ -33,10 +33,10 @@ const seedDatabase = async () => {
       const newUser = new User(user);
       await newUser.save();
     }
-    await Skill.insertMany(skillData);
-    await Project.insertMany(projectData);
-    await WorkExperience.insertMany(workData);
-    await OrgExperience.insertMany(organizationData);
+    // await Skill.insertMany(skillData);
+    // await Project.insertMany(projectData);
+    // await WorkExperience.insertMany(workData);
+    // await OrgExperience.insertMany(organizationData);
 
     console.log("Database seeded successfully");
     mongoose.connection.close();
