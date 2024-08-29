@@ -1,6 +1,7 @@
 const express = require("express");
 const auth = require("../middleware/auth.middleware");
 const { Skill } = require("../model/models");
+const upload = require("../middleware/upload.middleware");
 
 const router = express.Router();
 
@@ -26,9 +27,12 @@ router.get("/:id", async (req, res) => {
 });
 
 // Post Skill
-router.post("/create", auth, async (req, res) => {
+router.post("/create", auth, upload.single("icon"), async (req, res) => {
   try {
     const skillData = req.body;
+    if (req.file) {
+      skillData.icon = "/uploads/" + req.file.filename;
+    }
     const newSkill = new Skill(skillData);
     const savedSkill = await newSkill.save();
     res.status(201).json(savedSkill);
@@ -38,10 +42,13 @@ router.post("/create", auth, async (req, res) => {
 });
 
 // Update Skill
-router.patch("/update/:id", auth, async (req, res) => {
+router.patch("/update/:id", auth, upload.single("icon"), async (req, res) => {
   try {
     const skillId = req.params.id;
     const skillData = req.body;
+    if (req.file) {
+      skillData.icon = "/uploads/" + req.file.filename;
+    }
     const updatedSkill = await Skill.findByIdAndUpdate(skillId, skillData, { new: true });
 
     if (!updatedSkill) {
@@ -62,6 +69,12 @@ router.delete("/destroy/:id", auth, async (req, res) => {
 
     if (!deletedSkill) {
       res.status(404).send("Data not found!");
+    }
+
+    if (deletedSkill.icon) {
+      await fs.promises.unlink(path.join("public", deletedSkill.icon), (err) => {
+        res.status(500).send(err.message);
+      });
     }
 
     res.status(200).send("Data deleted!");

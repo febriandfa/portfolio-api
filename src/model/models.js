@@ -51,6 +51,10 @@ const Project = model("Project", projectSchema);
 // Skill Schema
 const skillSchema = new Schema({
   name: String,
+  icon: {
+    type: String,
+    default: null,
+  },
   level: {
     type: String,
     default: null,
