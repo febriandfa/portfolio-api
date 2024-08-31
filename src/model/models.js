@@ -70,7 +70,15 @@ const workExperienceSchema = new Schema({
     type: Date,
     default: "Present",
   },
-  company: String,
+  desc: {
+    type: String,
+    default: null,
+  },
+  company: {
+    type: Schema.Types.ObjectId,
+    ref: "Company",
+    required: true,
+  },
   status: {
     type: String,
     enum: ["intern", "full-time", "contract", "part-time"],
@@ -91,7 +99,15 @@ const orgExperienceSchema = new Schema({
     type: Date,
     default: "Present",
   },
-  organization: String,
+  desc: {
+    type: String,
+    default: null,
+  },
+  organization: {
+    type: Schema.Types.ObjectId,
+    ref: "Company",
+    required: true,
+  },
   status: {
     type: String,
     enum: ["active", "inactive"],
@@ -102,7 +118,20 @@ const orgExperienceSchema = new Schema({
     default: null,
   },
 });
-const OrgExperience = model("orgExperience", orgExperienceSchema);
+const OrgExperience = model("OrgExperience", orgExperienceSchema);
+
+const companySchema = new Schema({
+  name: String,
+  logo: {
+    type: String,
+    default: null,
+  },
+  website: {
+    type: String,
+    default: null,
+  },
+});
+const Company = model("Company", companySchema);
 
 module.exports = {
   User,
@@ -110,4 +139,5 @@ module.exports = {
   Skill,
   WorkExperience,
   OrgExperience,
+  Company,
 };

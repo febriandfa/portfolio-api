@@ -9,6 +9,7 @@ const skillRoutes = require("./src/routes/skillRoutes");
 const projectRoutes = require("./src/routes/projectRoutes");
 const workExpRoutes = require("./src/routes/workExpRoutes");
 const orgExpRoutes = require("./src/routes/orgExpRoutes");
+const companyRoutes = require("./src/routes/companyRoutes");
 
 const app = express();
 const port = process.env.PORT;
@@ -37,6 +38,9 @@ app.use("/api/work-experience", workExpRoutes);
 
 // Organization Experience Route
 app.use("/api/organization-experience", orgExpRoutes);
+
+// Company Route
+app.use("/api/company", companyRoutes);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

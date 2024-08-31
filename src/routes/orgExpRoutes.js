@@ -10,7 +10,7 @@ const router = express.Router();
 // Get All OrgExperience
 router.get("/", async (req, res) => {
   try {
-    const orgs = await OrgExperience.find();
+    const orgs = await OrgExperience.find().populate("organization");
     res.status(201).json(orgs);
   } catch (err) {
     res.status(500).send(err.message);
