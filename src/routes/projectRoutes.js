@@ -10,7 +10,7 @@ const router = express.Router();
 // Get All Project
 router.get("/", async (req, res) => {
   try {
-    const projects = await Project.find();
+    const projects = await Project.find().sort({ start_date: -1 });
     res.status(201).json(projects);
   } catch (err) {
     res.status(500).send(err.message);

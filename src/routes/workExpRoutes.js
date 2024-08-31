@@ -10,7 +10,7 @@ const router = express.Router();
 // Get All WorkExperience
 router.get("/", async (req, res) => {
   try {
-    const works = await WorkExperience.find().populate("company");
+    const works = await WorkExperience.find().populate("company").sort({ start_date: -1 });
     res.status(201).json(works);
   } catch (err) {
     res.status(500).send(err.message);
